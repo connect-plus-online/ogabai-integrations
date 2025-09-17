@@ -1,4 +1,3 @@
-// src/middlewares/retry.ts
 import type { Middleware } from "../middleware";
 
 export const retryMiddleware = (opts?: { retries?: number; delayMs?: number }): Middleware => {

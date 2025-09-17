@@ -1,7 +1,6 @@
-// src/example-usage.ts
-import { GraphQLClient } from "./client";
-import { createUserService } from "./services/user.service";
-import { retryMiddleware } from "./middlewares/retry";
+import { GraphQLClient } from "../client";
+import { createUserService } from "../services/user.service";
+import { retryMiddleware } from "../middlewares/retry";
 
 const client = new GraphQLClient({
   url: "https://api.example.com/graphql",

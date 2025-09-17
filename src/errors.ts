@@ -1,4 +1,3 @@
-// src/errors.ts
 export class SdkError extends Error {
   code?: string;
   info?: any;

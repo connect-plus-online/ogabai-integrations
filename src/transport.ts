@@ -1,4 +1,3 @@
-// src/transport.ts
 import type { RequestContext, ResponseContext, Middleware } from "./middleware";
 import type { GraphQLResponse } from "./types";
 
