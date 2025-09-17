@@ -1,4 +1,3 @@
-// src/types.ts
 export type Money = { amount: number; currency: string };
 
 export type UserRole = "admin" | "agent" | "customer";

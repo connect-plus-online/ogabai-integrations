@@ -17,7 +17,7 @@ query GetUser($id: ID!) {
 
 export const createUserService = (client: GraphQLClient) => ({
   async getUser(id: string): Promise<User | null> {
-    const res = await client.request<{ user: User }>(GET_USER, { id });
+    const res = await client.request<{ user: User }>(GET_USER, { id }, { cacheOptions : { skipCache: true }});
     return res.data?.user ?? null;
   },
 });

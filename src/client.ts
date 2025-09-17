@@ -1,4 +1,3 @@
-// src/client.ts
 import { compose, type Middleware, type RequestContext, type ResponseContext } from "./middleware";
 import { createTransport } from "./transport";
 import { toAsyncHeadersFactory, toAsyncTokenProvider } from "./auth";
@@ -44,8 +43,13 @@ export class GraphQLClient {
   }
 
   // core request
-  public async request<T = any>(query: string, variables?: Record<string, any>): Promise<GraphQLResponse<T>> {
-    const ctx: RequestContext = { request: { query, variables }, url: this.url, headers: {} };
+  public async request<T = any>(query: string, variables?: Record<string, any>, options?: Partial<Omit<RequestContext, "request"|"url">>): Promise<GraphQLResponse<T>> {
+    const ctx: RequestContext = { 
+        request: { query, variables }, 
+        url: this.url, 
+        headers: options?.headers ?? {},
+        cacheOptions: options?.cacheOptions
+    };
     const resCtx: ResponseContext<T> = {};
     const runner = compose(this.middlewares);
     await runner<T>(ctx, resCtx);

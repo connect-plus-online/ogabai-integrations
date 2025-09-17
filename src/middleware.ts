@@ -1,10 +1,12 @@
 import { GraphQLRequest, GraphQLResponse } from "./types";
+import { CacheRequestOptions } from "./middlewares/cache";
 
 export type RequestContext = {
   request: GraphQLRequest;
   url: string;
   headers: Record<string, string>;
   meta?: Record<string, any>;
+  cacheOptions?: CacheRequestOptions;
 };
 
 export type ResponseContext<T = any> = {

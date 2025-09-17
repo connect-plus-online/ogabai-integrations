@@ -1,14 +1,31 @@
 {
     "name": "@connect-plus-online/ogabai-integrations",
-    "version": "0.1.0",
+    "version": "0.1.01",
+    "description": "Ogabai integrations for Connect Plus Online",
+    "keywords": [
+        "graphql",
+        "sdk",
+        "typescript",
+        "connecthive",
+        "ogabai",
+        "ogabai-integrations",
+        "connect-plus",
+        "connect-plus-online"
+    ],
+    "author": "Agu Chijioke <chokey2nv@gmail.com>",
+    "license": "MIT",
     "main": "dist/index.cjs.js",
     "module": "dist/index.esm.js",
     "types": "dist/index.d.ts",
     "files": [
         "dist"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
         "build": "tsup src/index.ts --dts --format cjs,esm --out-dir dist",
+        "prepublishOnly": "yarn build",
         "test": "vitest",
         "lint": "eslint src --ext .ts"
     },
