@@ -1,0 +1,21 @@
+{
+    "name": "@connect-plus-online/ogabai-sdk",
+    "version": "0.1.0",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup src/index.ts --dts --format cjs,esm --out-dir dist",
+        "test": "vitest",
+        "lint": "eslint src --ext .ts"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "tsup": "^6.0.0",
+        "typescript": "^5.0.0",
+        "vitest": "^0.34.0"
+    }
+}
