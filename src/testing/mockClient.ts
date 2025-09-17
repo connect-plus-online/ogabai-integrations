@@ -1,5 +1,5 @@
 import type { GraphQLClient } from "../client";
-import type { GraphQLRequest, GraphQLResponse } from "../types";
+import type { GraphQLRequest, GraphQLResponse } from "../types/request";
 
 /**
  * Very small mock client that conforms to GraphQLClient.request interface.

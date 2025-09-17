@@ -1,4 +1,5 @@
 export * from "./types";
+export * from  "./types/index";
 export * from "./auth";
 export * from "./errors";
 export { GraphQLClient } from "./client";
