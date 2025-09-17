@@ -1,4 +1,3 @@
-// src/testing/mockClient.ts
 import type { GraphQLClient } from "../client";
 import type { GraphQLRequest, GraphQLResponse } from "../types";
 

@@ -1,4 +1,3 @@
-// src/services/user.service.ts
 import type { User } from "../types";
 import type { GraphQLClient } from "../client";
 

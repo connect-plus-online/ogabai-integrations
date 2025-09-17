@@ -1,4 +1,3 @@
-// src/middlewares/cache.ts
 import type { Middleware } from "../middleware";
 import type { GraphQLResponse } from "../types";
 
