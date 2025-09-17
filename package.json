@@ -1,5 +1,5 @@
 {
-    "name": "@connect-plus-online/ogabai-sdk",
+    "name": "@connect-plus-online/ogabai-integrations",
     "version": "0.1.0",
     "main": "dist/index.cjs.js",
     "module": "dist/index.esm.js",
