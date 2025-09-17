@@ -1,6 +1,5 @@
-// src/services/user.service.ts
-import type { User } from "../types";
 import type { GraphQLClient } from "../client";
+import { User } from "../types/user";
 
 /** GraphQL text kept here so you write ops by hand */
 const GET_USER = `

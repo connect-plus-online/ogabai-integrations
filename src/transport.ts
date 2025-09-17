@@ -1,5 +1,5 @@
 import type { RequestContext, ResponseContext, Middleware } from "./middleware";
-import type { GraphQLResponse } from "./types";
+import type { GraphQLResponse } from "./types/request";
 
 export type TransportOptions = {
   fetchImpl?: typeof fetch; // allow injection (node polyfill or axios wrapper)

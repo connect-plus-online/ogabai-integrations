@@ -1,16 +1,3 @@
-export type Money = { amount: number; currency: string };
-
-export type UserRole = "admin" | "agent" | "customer";
-
-export type User = {
-  id: string;
-  name: string;
-  email?: string;
-  role: UserRole;
-  balance?: Money;
-};
-
-/** GraphQL-related */
 export type GraphQLVariables = Record<string, any> | undefined;
 
 export type GraphQLRequest = {

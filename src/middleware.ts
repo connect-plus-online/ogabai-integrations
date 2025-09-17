@@ -1,4 +1,4 @@
-import { GraphQLRequest, GraphQLResponse } from "./types";
+import { GraphQLRequest, GraphQLResponse } from "./types/request";
 import { CacheRequestOptions } from "./middlewares/cache";
 
 export type RequestContext = {

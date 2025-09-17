@@ -11,5 +11,5 @@
 "resolveJsonModule": true,
 "lib": ["ES2020", "DOM"]
 },
-"include": ["_src", "src/types.ts", "src/middleware.ts"]
+"include": ["_src", "src/types/request.ts", "src/middleware.ts"]
 }
