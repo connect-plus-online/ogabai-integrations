@@ -1,5 +1,5 @@
 import { GraphQLClient } from "../client";
-import { createUserService } from "../services/user.service";
+import { createUserService } from "../services/user/user.service";
 import { createCacheMiddleware } from "../middlewares/cache";
 // Normal client setup
 const cacheMw = createCacheMiddleware({ ttlMs: 60_000 });

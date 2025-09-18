@@ -26,13 +26,18 @@
     "scripts": {
         "build": "tsup src/index.ts --dts --format cjs,esm --out-dir dist",
         "prepublishOnly": "yarn build",
+        "lint": "eslint src --ext .ts",
         "test": "vitest",
-        "lint": "eslint src --ext .ts"
+        "test:watch": "vitest"
     },
     "dependencies": {},
     "devDependencies": {
+        "@types/node": "^24.5.2",
+        "@vitest/coverage-c8": "^0.33.0",
+        "@vitest/ui": "^3.2.4",
+        "ts-node": "^10.9.2",
         "tsup": "^6.0.0",
-        "typescript": "^5.0.0",
-        "vitest": "^0.34.0"
+        "typescript": "^5.9.2",
+        "vitest": "^3.2.4"
     }
 }
