@@ -11,6 +11,7 @@ export type ClientOptions = {
   timeoutMs?: number;
   middlewares?: Middleware[]; // additional user middlewares
 };
+export type RequestOption<U = any> = Partial<Omit<RequestContext<U>, "request"|"url">>
 
 export class GraphQLClient {
   private url: string;
@@ -29,7 +30,7 @@ export class GraphQLClient {
     this.middlewares = base;
   }
 
-  private async authMiddleware<T = any>(ctx: RequestContext, resCtx: ResponseContext<T>, next: () => Promise<void>) {
+  private async authMiddleware<T = any, U = any>(ctx: RequestContext<U>, resCtx: ResponseContext<T>, next: () => Promise<void>) {
     const token = await this.tokenProvider();
     const dynamicHeaders = await this.headersFactory();
     ctx.headers = {
@@ -43,13 +44,14 @@ export class GraphQLClient {
   }
 
   // core request
-  public async request<T = any>(query: string, variables?: Record<string, any>, options?: Partial<Omit<RequestContext, "request"|"url">>): Promise<GraphQLResponse<T>> {
-    const ctx: RequestContext = { 
+  public async request<T = any, U = any>(query: string, variables?: U, options?: RequestOption): Promise<GraphQLResponse<T>> {
+    const ctx: RequestContext<U> = { 
         request: { query, variables }, 
         url: this.url, 
         headers: options?.headers ?? {},
         cacheOptions: options?.cacheOptions
     };
+    console.log({ query, variables })
     const resCtx: ResponseContext<T> = {};
     const runner = compose(this.middlewares);
     await runner<T>(ctx, resCtx);

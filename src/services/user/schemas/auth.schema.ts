@@ -8,7 +8,7 @@ export const authSchema = {
   `,
 
   login: (query: string) => `
-    query login($phone: String!, $pin: String!, $userType: UserTypeEnum) {
+    mutation login($phone: String!, $pin: String!, $userType: UserTypeInputEnum) {
       login(phone: $phone, pin: $pin, userType: $userType) {
         ${query}
       }
@@ -16,8 +16,8 @@ export const authSchema = {
   `,
 
   signUp: (query: string) => `
-    mutation signUp($phone: String!, $pin: String!, $storeName: String!, $userType: UserTypeEnum) {
-      signUp(phone: $phone, pin: $pin, storeName: $storeName, userType: $userType) {
+    mutation signUp($phone: String!, $pin: String!, $storeName: String!, $email: String, $userType: UserTypeInputEnum) {
+      signUp(phone: $phone, pin: $pin, storeName: $storeName, email: $email, userType: $userType) {
         ${query}
       }
     }

@@ -1,8 +1,8 @@
 import { GraphQLRequest, GraphQLResponse } from "./types/request";
 import { CacheRequestOptions } from "./middlewares/cache";
 
-export type RequestContext = {
-  request: GraphQLRequest;
+export type RequestContext<U = any> = {
+  request: GraphQLRequest<U>;
   url: string;
   headers: Record<string, string>;
   meta?: Record<string, any>;
@@ -17,8 +17,8 @@ export type ResponseContext<T = any> = {
 
 export type Next = () => Promise<void>;
 
-export type Middleware = <T = any>(
-  ctx: RequestContext,
+export type Middleware = <T = any, U = any>(
+  ctx: RequestContext<U>,
   resCtx: ResponseContext<T>,
   next: Next
 ) => Promise<void>;
@@ -29,9 +29,10 @@ export type Middleware = <T = any>(
  */
 export const compose =
   (middlewares: Middleware[]) =>
-  async <T = any>(ctx: RequestContext, resCtx: ResponseContext<T>) => {
+  async <T = any, U = any>(ctx: RequestContext<U>, resCtx: ResponseContext<T>) => {
     let idx = -1;
     const dispatch = async (i: number): Promise<void> => {
+      console.log({ i, idx, fnName: middlewares[i]?.toString() });
       if (i <= idx) throw new Error("next() called multiple times");
       idx = i;
       const fn = middlewares[i];

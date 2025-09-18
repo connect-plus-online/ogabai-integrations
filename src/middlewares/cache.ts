@@ -1,11 +1,11 @@
 import type { Middleware } from "../middleware";
 import type { GraphQLResponse } from "../types/request";
 
-type CacheKeyFn = (query: string, variables?: Record<string, any>) => string;
+type CacheKeyFn<U = any> = (query: string, variables?: U) => string;
 
-export type CacheOptions = {
+export type CacheOptions<U = any> = {
   ttlMs?: number; // time-to-live per entry
-  keyFn?: CacheKeyFn; // custom key generator
+  keyFn?: CacheKeyFn<U>; // custom key generator
   maxEntries?: number; // optional cap (naive LRU)
 };
 

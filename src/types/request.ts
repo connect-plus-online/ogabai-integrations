@@ -1,8 +1,8 @@
 export type GraphQLVariables = Record<string, any> | undefined;
 
-export type GraphQLRequest = {
+export type GraphQLRequest<T = GraphQLVariables> = {
   query: string;
-  variables?: GraphQLVariables;
+  variables?: T;
   operationName?: string;
 };
 

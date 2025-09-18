@@ -1,9 +1,8 @@
 export * from "./types";
-export * from  "./types/index";
 export * from "./auth";
 export * from "./errors";
 export { GraphQLClient } from "./client";
-export * from "./services/user.service";
+export * from "./services";
 export * from "./testing/mockClient";
 
 /* Example ready-to-use factory:
