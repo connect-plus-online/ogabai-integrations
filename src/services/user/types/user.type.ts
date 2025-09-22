@@ -4,7 +4,7 @@ import {
     UserSetting, 
     UserType 
 } from "../../../types";
-import { UserBluePrint, UserSettingBluePrint } from "../entities/user.entity";
+import { UserFields, UserSettingFields } from "../entities/user.entity";
 
 export interface UpdateTxPinRequest {
     userId: string;
@@ -22,15 +22,15 @@ export interface UpdateUserSettingRequest {
 export interface UpdateUserSettingResponse {
     userSetting: UserSetting;
 }
-export type UpdateUserSettingResponseBP = GetUserSettingResponseBP
+export type UpdateUserSettingResponseFields = GetUserSettingResponseFields
 export interface GetUserSettingRequest {
     userId: string;
 }
 export interface GetUserSettingResponse {
     userSetting: UserSetting;
 }
-export interface GetUserSettingResponseBP {
-    userSetting: UserSettingBluePrint;
+export interface GetUserSettingResponseFields {
+    userSetting: UserSettingFields;
 }
 export interface ResetPinRequest {
     phone: string;
@@ -54,15 +54,15 @@ export interface GetUsersRequest {
 export interface GetUsersResponse {
     users: User[];
 }
-export type GetUsersResponseBP = GetUserResponseBP;
+export type GetUsersResponseFields = GetUserResponseFields;
 export interface GetUserRequest {
     userId: string;
 }
 export interface GetUserResponse {
     user: User;
 }
-export interface GetUserResponseBP {
-    user: UserBluePrint;
+export interface GetUserResponseFields {
+    user: UserFields;
 }
 export interface AddUserRequest {
     user: User;
@@ -93,7 +93,7 @@ export interface UpdateUserResponse {
     user: User;
     uploadImageResponse: UploadUserImageResponse
 }
-export interface UpdateUserResponseBP extends GetUserResponseBP {
+export interface UpdateUserResponseFields extends GetUserResponseFields {
     uploadImageResponse: (keyof UploadUserImageResponse)[]
 }
 export interface UploadUserImageResponse {
@@ -125,7 +125,7 @@ export interface GetUserNotificationSettingsRequest {
 export interface GetUserNotificationSettingsResponse {
     userNotificationSettings: UserNotificationSettings;
 }
-export interface GetUserNotificationSettingsResponseBP {
+export interface GetUserNotificationSettingsResponseFields {
     userNotificationSettings: (keyof UserNotificationSettings)[]
 }
 export interface UpdateUserNotificationSettingsRequest {
@@ -135,4 +135,4 @@ export interface UpdateUserNotificationSettingsRequest {
 export interface UpdateUserNotificationSettingsResponse {
     userNotificationSettings: UserNotificationSettings;
 }
-export type UpdateUserNotificationSettingsResponseBP = GetUserNotificationSettingsResponseBP;
+export type UpdateUserNotificationSettingsResponseFields = GetUserNotificationSettingsResponseFields;
