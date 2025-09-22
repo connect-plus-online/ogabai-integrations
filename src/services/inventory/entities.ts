@@ -1,6 +1,11 @@
-import { Price, Product, ProductCategory, ProductPackage, Stock, Store } from "../../types";
+import { Price, Product, ProductAttribute, ProductCategory, ProductName, ProductPackage, Stock, Store } from "../../types";
 
 
+export type AttributeFields = (keyof ProductAttribute)[]
+export const attributeQuery: AttributeFields = [
+    "name",
+    "value",
+]
 export type PriceFields = (keyof Price)[];
 export const priceQuery:PriceFields = [
     "_id",
@@ -64,6 +69,11 @@ export const productQuery:ProductFields = [
     "storeId",
     "tag", 
     "totalStockInMetricPackage",
+]
+export type ProductNamesFields = (keyof ProductName)[]
+export const productNameQuery: ProductNamesFields = [
+    "_id",
+    "name"
 ]
 export type ProductFields = (keyof Product)[]
 export const packageQuery: PackageFields = [

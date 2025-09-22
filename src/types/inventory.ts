@@ -15,9 +15,11 @@ export interface ProductCategory {
   isTemplate: string; // not stored
 }
 
-export interface Product {
+export interface ProductName {
   _id: string;
   name: string;
+}
+export interface Product extends ProductName {
   barcode: string;
   description: string;
   categoryId: string;
