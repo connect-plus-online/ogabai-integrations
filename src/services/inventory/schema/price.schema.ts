@@ -16,7 +16,7 @@ export const priceSchema = {
   `,
 
   addPrice: (mutation: string) => `
-    mutation addPrice($price: PriceInput!) {
+    mutation addPrice($price: PriceInput) {
       addPrice(price: $price) {
         ${mutation}
       }
@@ -24,7 +24,7 @@ export const priceSchema = {
   `,
 
   updatePrice: (mutation: string) => `
-    mutation updatePrice($priceId: String!, $price: PriceInput!) {
+    mutation updatePrice($priceId: String, $price: PriceInput) {
       updatePrice(priceId: $priceId, price: $price) {
         ${mutation}
       }
