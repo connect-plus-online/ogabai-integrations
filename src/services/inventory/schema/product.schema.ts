@@ -14,6 +14,20 @@ export const productSchema = {
       }
     }
   `,
+  getProductByBarcode: (query: string) => `
+    query getProductByBarcode($barcode: String!, $fetchFromGS1IfNotFound: Boolean, $template: Boolean) {
+      productByBarcode(barcode: $barcode, fetchFromGS1IfNotFound: $fetchFromGS1IfNotFound, template: $template) {
+        ${query}
+      }
+    }
+  `,
+  searchProductName: (query: string) => `
+    query searchProductName($search: String!, $limit: Int, $skip: Int, $template: Boolean) {
+      searchProductName(search: $search, limit: $limit, skip: $skip, template: $template) {
+        ${query}
+      }
+    }
+  `,
 
   addProduct: (mutation: string) => `
     mutation addProduct($product: ProductInput!, $imageTypes: [String], $template: Boolean) {
