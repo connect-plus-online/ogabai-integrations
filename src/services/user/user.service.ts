@@ -2,7 +2,7 @@ import type { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
 import userSchema from "./schemas/user.schema";
 import { User } from "../../types/user";
-import { GetUserResponse, GetUserResponseBP } from "./types/user.type";
+import { GetUserResponse, GetUserResponseFields } from "./types/user.type";
 import { userQuery } from "./entities/user.entity";
 
 export const createUserService = (client: GraphQLClient) => ({
@@ -10,13 +10,13 @@ export const createUserService = (client: GraphQLClient) => ({
     _id: string, 
     fetchFields?: {
       root?: (keyof GetUserResponse)[],
-      nestedFields?: GetUserResponseBP
+      nestedFields?: GetUserResponseFields
     },
     option?: RequestOption
   ): Promise<User | null> {
     const res = await client.request<{ getUser: User }>(
       userSchema.getUser(
-        gqlQueryStringBuilder<GetUserResponse, GetUserResponseBP>(
+        gqlQueryStringBuilder<GetUserResponse, GetUserResponseFields>(
           fetchFields?.root ?? ["user"], 
           fetchFields?.nestedFields ?? {
             user: userQuery,
