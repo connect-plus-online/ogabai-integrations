@@ -14,37 +14,13 @@ export const userSchema = {
       }
     }
   `,
-  updateUserSetting: (mutation: string) => `
-    mutation updateUserSetting($userId: String!, $userSetting: UserSettingInput!) {
-      updateUserSetting(userId: $userId, userSetting: $userSetting) {
+  updateUser: (mutation: string) => `
+    mutation updateUser($userId: String!, $userUpdate: UpdateUserFieldInput, $imageType: String) {
+      updateUser(userId: $userId, userUpdate: $userUpdate, imageType: $imageType) {
         ${mutation}
       }
     }
   `,
-
-  getUserSetting: (query: string) => `
-    query getUserSetting($userId: String!) {
-      getUserSetting(userId: $userId) {
-        ${query}
-      }
-    }
-  `,
-
-  getUserNotificationSettings: (query: string) => `
-    query getUserNotificationSettings($userId: String!) {
-      getUserNotificationSettings(userId: $userId) {
-        ${query}
-      }
-    }
-  `,
-
-  updateUserNotificationSettings: (mutation: string) => `
-    mutation updateUserNotificationSettings($userId: String!, $userNotificationSettings: UserNotificationSettingsInput) {
-      updateUserNotificationSettings(userId: $userId, userNotificationSettings: $userNotificationSettings) {
-        ${mutation}
-      }
-    }
-  `
 }
 
 export default userSchema

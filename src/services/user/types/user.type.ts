@@ -1,50 +1,32 @@
 import { 
     User,
     UserNotificationSettings, 
-    UserSetting, 
     UserType 
 } from "../../../types";
-import { UserFields, UserSettingFields } from "../entities/user.entity";
+import { NotificationChannelsFields, notificationChannelsQuery, ServiceUpdateFields, serviceUpdateQuery, UserFields, UserNotificationSettingsFields, userNotificationSettingsQuery, userQuery } from "../user.entity";
 
-export interface UpdateTxPinRequest {
+
+// get user 
+export interface GetUserRequest {
     userId: string;
-    pin: string;
-    oldPin: string;
 }
-export interface UpdateTxPinResponse {
-    success: boolean;
+export interface GetUserResponse {
+    user: User;
+}
+export interface GetUserResponseNestedFields {
+    user: UserFields;
+}
+export const getUserResponse: (keyof GetUserResponse)[] = [
+    "user"
+]
+export const _getUserResponseNestedFields: Omit<GetUserResponseNestedFields, "user"> = {}
+export const getUserResponseNestedFields: GetUserResponseNestedFields = {
+    user: userQuery,
+    ..._getUserResponseNestedFields,
 }
 
-export interface UpdateUserSettingRequest {
-    userId: string;
-    userSetting: UserSetting;
-}
-export interface UpdateUserSettingResponse {
-    userSetting: UserSetting;
-}
-export type UpdateUserSettingResponseFields = GetUserSettingResponseFields
-export interface GetUserSettingRequest {
-    userId: string;
-}
-export interface GetUserSettingResponse {
-    userSetting: UserSetting;
-}
-export interface GetUserSettingResponseFields {
-    userSetting: UserSettingFields;
-}
-export interface ResetPinRequest {
-    phone: string;
-    pin: string;
-}
-export interface ResetPinResponse {
-    success: boolean;
-}
-export interface CheckRegistrationRequest {
-    phone: string;
-}
-export interface CheckRegistrationResponse {
-    isRegistered: boolean;
-}
+
+// get users
 export interface GetUsersRequest {
     userIds?: string[];
     user?: User;
@@ -54,16 +36,19 @@ export interface GetUsersRequest {
 export interface GetUsersResponse {
     users: User[];
 }
-export type GetUsersResponseFields = GetUserResponseFields;
-export interface GetUserRequest {
-    userId: string;
+export interface GetUsersResponseNestedFields extends Omit<GetUserResponseNestedFields, "user"> {
+    users: UserFields
 }
-export interface GetUserResponse {
-    user: User;
+export const getUsersResponse: (keyof GetUsersResponse)[] = [
+    "users"
+];
+export const getUsersResponseNestedFields: GetUsersResponseNestedFields = {
+    users: userQuery,
+    ..._getUserResponseNestedFields,
 }
-export interface GetUserResponseFields {
-    user: UserFields;
-}
+
+
+// add user 
 export interface AddUserRequest {
     user: User;
     userType: UserType;
@@ -71,68 +56,31 @@ export interface AddUserRequest {
 export interface AddUserResponse {
     user: User;
 }
-export interface SendOTPRequest {
-    phone: string;
-}
-export interface SendOTPResponse {
-    successful: boolean;
-    otp: string;
-}
-export interface VerifyOTPRequest {
-    phone: string;
-    otp: string;
-}
-export interface VerifyOTPResponse {
-    otpVerifiedAccessToken: string;
-}
+export type AddUserResponseNestedFields = GetUserResponseNestedFields;
+export const addUserResponse = getUserResponse;
+export const addUserResponseNestedFields = getUserResponseNestedFields;
+
+// update user 
 export interface UpdateUserRequest {
     userId: string;
     user: User;
-}
-export interface UpdateUserResponse {
-    user: User;
-    uploadImageResponse: UploadUserImageResponse
-}
-export interface UpdateUserResponseFields extends GetUserResponseFields {
-    uploadImageResponse: (keyof UploadUserImageResponse)[]
 }
 export interface UploadUserImageResponse {
     url: string;
     fileUrl: string;
 }
-export interface LoginRequest {
-    pin: string;
-    phone: string;
-    userType?: UserType;
+export interface UpdateUserResponse {
+    user: User;
+    uploadImageResponse: UploadUserImageResponse
 }
-export interface LoginResponse {
-    accessToken: string;
-    userId: string;
+export interface UpdateUserResponseNestedFields extends GetUserResponseNestedFields {
+    uploadImageResponse: (keyof UploadUserImageResponse)[]
 }
-export interface SignUpRequest {
-    phone: string;
-    pin: string;
-    storeName: string;
-    userType: UserType;
+export const updateUserResponse = {
+    ...getUserResponse,
+    "uploadImageResponse": ["fileUrl", "url"]
 }
-export interface SignUpResponse {
-    accessToken: string;
-    userId: string;
+export const updateUserResponseNestedFields: UpdateUserResponseNestedFields = {
+    ...getUserResponseNestedFields,
+    uploadImageResponse: ["fileUrl", "url"]
 }
-export interface GetUserNotificationSettingsRequest {
-    userId: string;
-}
-export interface GetUserNotificationSettingsResponse {
-    userNotificationSettings: UserNotificationSettings;
-}
-export interface GetUserNotificationSettingsResponseFields {
-    userNotificationSettings: (keyof UserNotificationSettings)[]
-}
-export interface UpdateUserNotificationSettingsRequest {
-    userNotificationSettings: UserNotificationSettings;
-    userId: string;
-}
-export interface UpdateUserNotificationSettingsResponse {
-    userNotificationSettings: UserNotificationSettings;
-}
-export type UpdateUserNotificationSettingsResponseFields = GetUserNotificationSettingsResponseFields;

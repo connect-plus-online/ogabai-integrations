@@ -46,15 +46,6 @@ export const authSchema = {
       }
     }
   `,
-
-  updateUser: (mutation: string) => `
-    mutation updateUser($userId: String!, $userUpdate: UpdateUserFieldInput, $imageType: String) {
-      updateUser(userId: $userId, userUpdate: $userUpdate, imageType: $imageType) {
-        ${mutation}
-      }
-    }
-  `,
-
   updateTxPin: (mutation: string) => `
     mutation updateTxPin($userId: String!, $pin: String!, $oldPin: String!) {
       updateTxPin(userId: $userId, pin: $pin, oldPin: $oldPin) {
