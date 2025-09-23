@@ -1,9 +1,8 @@
 import { 
     User,
-    UserNotificationSettings, 
     UserType 
 } from "../../../types";
-import { NotificationChannelsFields, notificationChannelsQuery, ServiceUpdateFields, serviceUpdateQuery, UserFields, UserNotificationSettingsFields, userNotificationSettingsQuery, userQuery } from "../user.entity";
+import { UserFields, userQuery } from "../user.entity";
 
 
 // get user 
