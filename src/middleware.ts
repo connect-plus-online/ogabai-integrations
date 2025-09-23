@@ -32,7 +32,6 @@ export const compose =
   async <T = any, U = any>(ctx: RequestContext<U>, resCtx: ResponseContext<T>) => {
     let idx = -1;
     const dispatch = async (i: number): Promise<void> => {
-      console.log({ i, idx, fnName: middlewares[i]?.toString() });
       if (i <= idx) throw new Error("next() called multiple times");
       idx = i;
       const fn = middlewares[i];

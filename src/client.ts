@@ -51,20 +51,22 @@ export class GraphQLClient {
         headers: options?.headers ?? {},
         cacheOptions: options?.cacheOptions
     };
-    console.log({ query, variables })
     const resCtx: ResponseContext<T> = {};
     const runner = compose(this.middlewares);
     await runner<T>(ctx, resCtx);
 
     if (resCtx.error) throw resCtx.error;
     if (!resCtx.response) throw new Error("No response from GraphQL transport");
-    if (resCtx.response.errors && resCtx.response.errors.length) {
-      // normalize, throw first error (apps can inspect)
-      const e = resCtx.response.errors[0];
-      const err = new Error(e.message);
-      (err as any).extensions = e.extensions;
-      throw err;
+    if(resCtx.response.errors){
+      console.log({errors: resCtx.response.errors})
     }
+    // if (resCtx.response.errors && resCtx.response.errors.length) {
+    //   // normalize, throw first error (apps can inspect)
+    //   const e = resCtx.response.errors[0];
+    //   const err = new Error(e.message);
+    //   (err as any).extensions = e.extensions;
+    //   // throw err;
+    // }
     return resCtx.response;
   }
 }

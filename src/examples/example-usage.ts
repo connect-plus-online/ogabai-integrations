@@ -14,7 +14,7 @@ const userService = createAuthService(client);
 
 (async () => {
   const u = await userService.login({
-    phone: "08064668635",
+    phone: "08034668633",
     pin: "12345678",
   });
   console.log(u);
