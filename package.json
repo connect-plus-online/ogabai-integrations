@@ -27,7 +27,7 @@
         "build": "tsup src/index.ts --dts --format cjs,esm --out-dir dist",
         "prepublishOnly": "yarn build",
         "lint": "eslint src --ext .ts",
-        "test": "vitest",
+        "test": "vitest run",
         "test:watch": "vitest"
     },
     "dependencies": {},

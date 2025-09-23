@@ -81,7 +81,7 @@ export interface SignUpRequest {
     phone: string;
     pin: string;
     storeName: string;
-    userType: UserType;
+    userType?: UserType;
 }
 export interface SignUpResponse {
     accessToken: string;

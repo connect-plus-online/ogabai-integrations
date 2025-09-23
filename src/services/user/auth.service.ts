@@ -1,5 +1,6 @@
 import { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
+import { GraphQLResponse } from "../../types";
 import {authSchema} from "./schemas/auth.schema";
 import { 
   LoginRequest, loginResponse, LoginResponse, 
@@ -17,8 +18,8 @@ export const createAuthService = (client: GraphQLClient) => ({
       root?: (keyof UpdateTxPinResponse)[],
     },
     option?: RequestOption
-  ): Promise<UpdateTxPinResponse | null> {
-    const res = await client.request<{ updateTxPin: UpdateTxPinResponse }, UpdateTxPinRequest>(
+  ): Promise<GraphQLResponse<{ updateTxPin: UpdateTxPinResponse }>> {
+    return client.request<{ updateTxPin: UpdateTxPinResponse }, UpdateTxPinRequest>(
       authSchema.updateTxPin(
         gqlQueryStringBuilder<UpdateTxPinResponse>(
           fetchFields?.root ?? updateTxPinResponse,
@@ -27,7 +28,6 @@ export const createAuthService = (client: GraphQLClient) => ({
       input, 
       option
     );
-    return res.data?.updateTxPin ?? null;
   },
   async verifyOTP(
     input: VerifyOTPRequest, 
@@ -35,8 +35,8 @@ export const createAuthService = (client: GraphQLClient) => ({
       root?: (keyof VerifyOTPResponse)[],
     },
     option?: RequestOption
-  ): Promise<VerifyOTPResponse | null> {
-    const res = await client.request<{ verifyOTP: VerifyOTPResponse }, VerifyOTPRequest>(
+  ): Promise<GraphQLResponse<{ verifyOTP: VerifyOTPResponse }>> {
+      return client.request<{ verifyOTP: VerifyOTPResponse }, VerifyOTPRequest>(
       authSchema.verifyOTP(
         gqlQueryStringBuilder<VerifyOTPResponse>(
           fetchFields?.root ?? verifyOTPResponse,
@@ -45,7 +45,6 @@ export const createAuthService = (client: GraphQLClient) => ({
       input, 
       option
     );
-    return res.data?.verifyOTP ?? null;
   },
   async sendOTP(
     input: SendOTPRequest, 
@@ -53,8 +52,8 @@ export const createAuthService = (client: GraphQLClient) => ({
       root?: (keyof SendOTPResponse)[],
     },
     option?: RequestOption
-  ): Promise<SendOTPResponse | null> {
-    const res = await client.request<{ sendOTP: SendOTPResponse }, SendOTPRequest>(
+  ): Promise<GraphQLResponse<{ sendOTP: SendOTPResponse }>> {
+    return client.request<{ sendOTP: SendOTPResponse }, SendOTPRequest>(
       authSchema.sendOTP(
         gqlQueryStringBuilder<SendOTPResponse>(
           fetchFields?.root ?? sendOTPResponse,
@@ -63,7 +62,6 @@ export const createAuthService = (client: GraphQLClient) => ({
       input, 
       option
     );
-    return res.data?.sendOTP ?? null;
   },
   async resetPin(
     input: ResetPinRequest, 
@@ -71,8 +69,8 @@ export const createAuthService = (client: GraphQLClient) => ({
       root?: (keyof ResetPinResponse)[],
     },
     option?: RequestOption
-  ): Promise<ResetPinResponse | null> {
-    const res = await client.request<{ resetPin: ResetPinResponse }, ResetPinRequest>(
+  ): Promise<GraphQLResponse<{resetPin: ResetPinResponse}>> {
+      return client.request<{ resetPin: ResetPinResponse }, ResetPinRequest>(
       authSchema.resetPin(
         gqlQueryStringBuilder<ResetPinResponse>(
           fetchFields?.root ?? resetPinResponse,
@@ -81,7 +79,6 @@ export const createAuthService = (client: GraphQLClient) => ({
       input, 
       option
     );
-    return res.data?.resetPin ?? null;
   },
   async signUp(
     input: SignUpRequest, 
@@ -89,8 +86,8 @@ export const createAuthService = (client: GraphQLClient) => ({
       root?: (keyof SignUpResponse)[],
     },
     option?: RequestOption
-  ): Promise<SignUpResponse | null> {
-    const res = await client.request<{ signUp: SignUpResponse }, SignUpRequest>(
+  ): Promise<GraphQLResponse<{ signUp: SignUpResponse }>> {
+    return client.request<{ signUp: SignUpResponse }, SignUpRequest>(
       authSchema.signUp(
         gqlQueryStringBuilder<SignUpResponse>(
           fetchFields?.root ?? signUpResponse,
@@ -99,7 +96,6 @@ export const createAuthService = (client: GraphQLClient) => ({
       input, 
       option
     );
-    return res.data?.signUp ?? null;
   },
   async login(
     input: LoginRequest, 
@@ -107,8 +103,8 @@ export const createAuthService = (client: GraphQLClient) => ({
       root?: (keyof LoginResponse)[],
     },
     option?: RequestOption
-  ): Promise<LoginResponse | null> {
-    const res = await client.request<{ login: LoginResponse }, LoginRequest>(
+  ): Promise<GraphQLResponse<{ login: LoginResponse }>> {
+    return client.request<{ login: LoginResponse }, LoginRequest>(
       authSchema.login(
         gqlQueryStringBuilder<LoginResponse>(
           fetchFields?.root ?? loginResponse,
@@ -117,6 +113,5 @@ export const createAuthService = (client: GraphQLClient) => ({
       input, 
       option
     );
-    return res.data?.login ?? null;
   },
 })
