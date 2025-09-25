@@ -16,8 +16,8 @@ export const authSchema = {
   `,
 
   signUp: (query: string) => `
-    mutation signUp($phone: String!, $pin: String!, $storeName: String!, $email: String, $userType: UserTypeInputEnum) {
-      signUp(phone: $phone, pin: $pin, storeName: $storeName, email: $email, userType: $userType) {
+    mutation signUp($firstName: String!, $lastName: String!, $phone: String!, $pin: String!, $storeName: String!, $storeLocation: String, $email: String, $userType: UserTypeInputEnum) {
+      signUp( firstName: $firstName, lastName: $lastName, phone: $phone, pin: $pin, storeName: $storeName, storeLocation: $storeLocation, email: $email, userType: $userType) {
         ${query}
       }
     }

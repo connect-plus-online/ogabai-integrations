@@ -44,6 +44,9 @@ describe("Auth API", () => {
       pin: "12345678",
       phone: "08034668633",
       storeName: "test store",
+      lastName: "Ceejay",
+      firstName: "Joe",
+      storeLocation: "Mushin, lagos state"
     });
     expect(res.data?.signUp).not.toBeNull();
   })
@@ -62,6 +65,8 @@ describe("Auth API", () => {
       pin: "12345678",
       phone: "08034668633",
       storeName: "test store",
+      lastName: "Ceejay",
+      firstName: "Joe"
     });
     expect(res.data?.signUp).toBeNull();
   })
