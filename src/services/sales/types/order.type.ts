@@ -1,35 +1,27 @@
+import { EntityCRUD } from "../../../helpers/crud.contract";
+import { createDeleteIntegration, createListIntegration, createStandardEntityIntegration } from "../../../helpers/entity.factory";
 import { Order } from "../../../types";
-import { OrderFields, orderQuery } from "../sale.entity";
+import { OrderFields, orderQuery, saleQuery } from "../sale.entity";
 
-export interface GetOrderRequest {
-    order: Promise<Order>;
-}
-export interface GetOrderResponse {
-    order: Order
-}
-export const getOrderResponse: (keyof GetOrderResponse)[] = ["order"];
-export interface GetOrderResponseNestedFields {
-    order: OrderFields
-}
-export const getOrderResponseNestedFields: GetOrderResponseNestedFields = {
-    order: orderQuery,
-}
+const ENTITY = "order" as const;
 
+// get order
+export type OrderCRUD = EntityCRUD<Order, typeof ENTITY>;
 
-// get orders
-export interface GetOrdersRequest {
-    order?: Promise<Order>;
-    orderIds?: string[];
-    limit: number;
-    skip: number;
-}
-export interface GetOrdersResponse {
-    orders: Order[];
-}
-export const getOrdersResponse: (keyof GetOrdersResponse)[] = ["orders"];
-export interface GetOrdersResponseNestedFields extends Omit<GetOrderResponseNestedFields, "order"> {
-    orders: OrderFields
-}
-export const getOrdersResponseNestedFields: GetOrdersResponseNestedFields = {
-    orders: orderQuery,
-}
+export const orderIntegration = createStandardEntityIntegration({
+  key: ENTITY,
+  fields: orderQuery,
+  nested: {
+    saleHolders: saleQuery,
+  }
+});
+
+export const orderListIntegration = createListIntegration<"order", OrderFields>({
+  key: ENTITY,
+  fields: orderQuery,
+  nested: {
+    saleHolders: saleQuery,
+  }
+});
+
+export const orderDeleteIntegration = createDeleteIntegration(ENTITY);

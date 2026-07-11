@@ -59,11 +59,13 @@ export const transactionQuery: TransactionFields = [
 ]
 export type OrderFields = (keyof Order)[];
 export const orderQuery: OrderFields = [
-    "_id",
+    "id",
     "createdAt",
     "orderStatus",
     "transactionId",
-    "userId"
+    "userId",
+    "saleHolders",
+    "storeId"
 ]
 export type SaleFields = (keyof Sale)[];
 export const saleQuery: SaleFields = [

@@ -32,7 +32,7 @@ export type DateFilter = {
 };
 
 // -------------------- Sale --------------------
-export type Sale = {
+export interface Sale {
   _id: string;
   productId: string;
   packageId: string;
@@ -58,7 +58,7 @@ export type Platform = "pos" | "commerce" | "wallet";
 export type TxStatus = "pending" | "processing" | "completed" | "failed";
 
 // "sale" | "refund" | "deposit" | "withdrawal"
-export type TransactionType = "sale" | "saleReturn" | "deposit" | "withdrawal"| "customerRefund" | "customerDeposit" | "expense";
+export type TransactionType = "sale" | "saleReturn" | "order" | "withdrawal"| "customerRefund" | "customerDeposit" | "expense";
 
 export type Transaction = {
   _id: string;
@@ -95,12 +95,13 @@ export type Transaction = {
 export type OrderStatus = "pending" | "processing" | "routing" | "delivered";
 
 export type Order = {
-  _id: string;
+  id: string;
   userId: string;
   orderStatus: OrderStatus;
   transactionId: string;
   storeId: string;
   createdAt: string;
+  saleHolders?: Sale[];
 };
 
 // -------------------- User Stats --------------------
