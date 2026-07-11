@@ -1,15 +1,9 @@
 import { AddTransactionResponse, AddTransactionResponseNestedFields, createTransactionService, orderIntegration, OrderCRUD, orderDeleteIntegration, orderListIntegration, Sale, Transaction } from "../..";
 import { GraphQLClient, RequestOption } from "../../client";
-import { gqlQueryStringBuilder } from "../../helpers/query";
 import { buildSchema } from "../../helpers/schema-builder";
 import { createOperationExecutor } from "../../helpers/service.factory";
 import { orderSchema } from "./schemas/order.schema";
-// import { 
-//   GetOrderRequest, getOrderResponse, GetOrderResponse, GetOrderResponseNestedFields, getOrderResponseNestedFields, 
-//   GetOrdersRequest, getOrdersResponse, GetOrdersResponse, GetOrdersResponseNestedFields, getOrdersResponseNestedFields,
-
-// } from "./types/order.type";
-  export const createOrderService = (client: GraphQLClient) =>  ({
+export const createOrderService = (client: GraphQLClient) =>  ({
     async createOrder(
       input: {
         transaction: Pick<Transaction, "from"|"amountPaid"|"amountTotal"|"storeId"|"createdById">,
