@@ -1,5 +1,5 @@
-import { Subscription } from "../../../types";
-import { SubscriptionFields, subscriptionQuery } from "../subscription.entity";
+import { Subscription, SubscriptionPlanFeatureBehaviour } from "../../../types";
+import { subscriptionAccessValueQuery, SubscriptionFields, subscriptionLimitValueQuery, subscriptionQuery, subscriptionPlanFeatureBehaviourQuery, SubscriptionPlanFeatureBehaviourFields, SubscriptionLimitValueFields, SubscriptionAccessValueFields } from "../subscription.entity";
 
 export interface GetSubscriptionRequest {
     subscription: Partial<Subscription>;
@@ -12,9 +12,16 @@ export const getSubscriptionResponse: (keyof GetSubscriptionResponse)[] = [
 ]
 export interface GetSubscriptionResponseNestedFields {
     subscription: SubscriptionFields
+    subscriptionBehaviours: SubscriptionPlanFeatureBehaviourFields;
+    subscriptionLimits: SubscriptionLimitValueFields;
+    SubscriptionAccesses: SubscriptionAccessValueFields;
+
 }
 export const _getSubscriptionResponseNestedFields: 
 Omit<GetSubscriptionResponseNestedFields, "subscription"> = {
+    subscriptionBehaviours: subscriptionPlanFeatureBehaviourQuery,
+    subscriptionLimits: subscriptionLimitValueQuery,
+    SubscriptionAccesses: subscriptionAccessValueQuery
     
 }
 export const getSubscriptionResponseNestedFields: GetSubscriptionResponseNestedFields = {
@@ -22,6 +29,14 @@ export const getSubscriptionResponseNestedFields: GetSubscriptionResponseNestedF
     subscription: subscriptionQuery
 }
 
+// get subscription by storeId
+export interface GetActiveSubscriptionByStoreIDRequest {
+    storeId: string
+}
+export type GetActiveSubscriptionByStoreIDResponse = GetSubscriptionResponse
+export const getActiveSubscriptionByStoreIDResponse: (keyof GetActiveSubscriptionByStoreIDResponse)[] = getSubscriptionResponse
+export type GetActiveSubscriptionByStoreIDResponseNestedFields = GetSubscriptionResponseNestedFields
+export const getActiveSubscriptionByStoreIDResponseNestedFields: GetActiveSubscriptionByStoreIDResponseNestedFields = getSubscriptionResponseNestedFields
 
 // gets
 export interface GetSubscriptionsRequest {

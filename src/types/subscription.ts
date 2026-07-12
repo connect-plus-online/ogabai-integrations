@@ -1,10 +1,6 @@
 export interface SubscriptionPlanFeatureBehaviour {
-  id: string;
-  subscriptionPlanFeatureKey: SubscriptionPlanFeatureKey;
-  shortname: string;
-  title: string;
-  description: string;
-  createdAt: string;
+  featureKey: SubscriptionPlanFeatureKey;
+  subscriptionPlanFeatureBehaviourId: string;
 }
 
 export interface SubscriptionPlanFeatureDefinition {
@@ -123,9 +119,9 @@ export interface Subscription {
     version: number;
     createdAt: string;
     updatedAt: string;
-    subscriptionTiers: SubscriptionPlanFeatureBehaviourValue[];
+    subscriptionBehaviours: SubscriptionPlanFeatureBehaviourValue[];
     subscriptionLimits: SubscriptionPlanFeatureLimitValue[];
-    subscriptionAccesses: SubscriptionPlanFeatureAccessValue[];
+    SubscriptionAccesses: SubscriptionPlanFeatureAccessValue[];
     paymentReference: string;
     paymentDataJson: string;
 }

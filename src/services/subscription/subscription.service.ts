@@ -1,7 +1,7 @@
 import { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
 import { subscriptionSchema } from "./schemas/subscription.schema";
-import { AddSubscriptionRequest, addSubscriptionResponse, AddSubscriptionResponse, addSubscriptionResponseNestedFields, AddSubscriptionResponseNestedFields, GetSubscriptionRequest, getSubscriptionResponse, GetSubscriptionResponse, getSubscriptionResponseNestedFields, GetSubscriptionResponseNestedFields, GetSubscriptionsRequest, getSubscriptionsResponse, GetSubscriptionsResponse, getSubscriptionsResponseNestedFields, GetSubscriptionsResponseNestedFields, RemoveSubscriptionRequest, removeSubscriptionResponse, RemoveSubscriptionResponse, UpdateSubscriptionRequest, updateSubscriptionResponse, UpdateSubscriptionResponse, updateSubscriptionResponseNestedFields, UpdateSubscriptionResponseNestedFields } from "./types/subscription.type";
+import { AddSubscriptionRequest, addSubscriptionResponse, AddSubscriptionResponse, addSubscriptionResponseNestedFields, AddSubscriptionResponseNestedFields, GetActiveSubscriptionByStoreIDRequest, GetActiveSubscriptionByStoreIDResponse, getActiveSubscriptionByStoreIDResponse, GetActiveSubscriptionByStoreIDResponseNestedFields, getActiveSubscriptionByStoreIDResponseNestedFields, GetSubscriptionRequest, getSubscriptionResponse, GetSubscriptionResponse, getSubscriptionResponseNestedFields, GetSubscriptionResponseNestedFields, GetSubscriptionsRequest, getSubscriptionsResponse, GetSubscriptionsResponse, getSubscriptionsResponseNestedFields, GetSubscriptionsResponseNestedFields, RemoveSubscriptionRequest, removeSubscriptionResponse, RemoveSubscriptionResponse, UpdateSubscriptionRequest, updateSubscriptionResponse, UpdateSubscriptionResponse, updateSubscriptionResponseNestedFields, UpdateSubscriptionResponseNestedFields } from "./types/subscription.type";
 
 export const createSubscriptionService = (client: GraphQLClient) => ({
       async removeSubscription(
@@ -70,6 +70,29 @@ export const createSubscriptionService = (client: GraphQLClient) => ({
                 option
             );
             return res.data?.addSubscription ?? null;
+      },
+      async getActiveSubscriptionByStoreID(
+            input: GetActiveSubscriptionByStoreIDRequest, 
+            fetchFields?: {
+            root?: (keyof GetActiveSubscriptionByStoreIDResponse)[],
+            nestedFields?: GetActiveSubscriptionByStoreIDResponseNestedFields
+            },
+            option?: RequestOption
+        ): Promise<GetActiveSubscriptionByStoreIDResponse | null> {
+            const res = await client.request<
+                { getActiveSubscriptionByStoreID: GetActiveSubscriptionByStoreIDResponse }, 
+                GetActiveSubscriptionByStoreIDRequest
+            >(
+                subscriptionSchema.getActiveSubscriptionByStoreID(
+                    gqlQueryStringBuilder<GetActiveSubscriptionByStoreIDResponse, GetActiveSubscriptionByStoreIDResponseNestedFields>(
+                    fetchFields?.root ?? getActiveSubscriptionByStoreIDResponse,
+                    fetchFields?.nestedFields ?? getActiveSubscriptionByStoreIDResponseNestedFields
+                    )
+                ), 
+                input, 
+                option
+            );
+            return res.data?.getActiveSubscriptionByStoreID ?? null;
       },
       async getSubscription(
             input: GetSubscriptionRequest, 

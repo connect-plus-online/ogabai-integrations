@@ -28,7 +28,7 @@ const authorizeUser = async (pin: string):Promise<LoginResponse|undefined> => {
     const authService = createAuthService(publicClient);
     if(existingUserAccount){
       const res = await authService.login({
-        phone: "08084063704",
+        phone: "+2347030773772",// "08084063704",
         pin,
         userType: "retail"
       })
@@ -47,7 +47,7 @@ const authorizeUser = async (pin: string):Promise<LoginResponse|undefined> => {
 
 export default async function globalSetup() {
   console.log("🌍 [global.setup.ts] Running once for all tests...");
-  const pin = "12345678"
+  const pin = "123456"
   const res = await authorizeUser(pin);
   const accessToken = res?.accessToken ?? "";
   const userId = res?.userId ?? "";
