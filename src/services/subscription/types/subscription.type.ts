@@ -1,5 +1,6 @@
-import { Subscription, SubscriptionPlanFeatureBehaviour } from "../../../types";
+import { Subscription } from "../../../types";
 import { subscriptionAccessValueQuery, SubscriptionFields, subscriptionLimitValueQuery, subscriptionQuery, subscriptionPlanFeatureBehaviourQuery, SubscriptionPlanFeatureBehaviourFields, SubscriptionLimitValueFields, SubscriptionAccessValueFields } from "../subscription.entity";
+import { subscriptionPlanIntegration } from "./subscription-plan.type";
 
 export interface GetSubscriptionRequest {
     subscription: Partial<Subscription>;
@@ -10,19 +11,20 @@ export interface GetSubscriptionResponse {
 export const getSubscriptionResponse: (keyof GetSubscriptionResponse)[] = [
     "subscription"
 ]
-export interface GetSubscriptionResponseNestedFields {
+
+type SubscriptionPlanResponseNestedFields = typeof subscriptionPlanIntegration.get.nestedFields
+export interface GetSubscriptionResponseNestedFields extends SubscriptionPlanResponseNestedFields{
     subscription: SubscriptionFields
     subscriptionBehaviours: SubscriptionPlanFeatureBehaviourFields;
     subscriptionLimits: SubscriptionLimitValueFields;
     SubscriptionAccesses: SubscriptionAccessValueFields;
-
 }
 export const _getSubscriptionResponseNestedFields: 
 Omit<GetSubscriptionResponseNestedFields, "subscription"> = {
     subscriptionBehaviours: subscriptionPlanFeatureBehaviourQuery,
     subscriptionLimits: subscriptionLimitValueQuery,
-    SubscriptionAccesses: subscriptionAccessValueQuery
-    
+    SubscriptionAccesses: subscriptionAccessValueQuery,
+    ...subscriptionPlanIntegration.get.nestedFields,
 }
 export const getSubscriptionResponseNestedFields: GetSubscriptionResponseNestedFields = {
     ..._getSubscriptionResponseNestedFields,

@@ -124,4 +124,5 @@ export interface Subscription {
     SubscriptionAccesses: SubscriptionPlanFeatureAccessValue[];
     paymentReference: string;
     paymentDataJson: string;
+    subscriptionPlan: SubscriptionPlan
 }

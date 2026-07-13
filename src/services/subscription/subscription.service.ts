@@ -74,8 +74,8 @@ export const createSubscriptionService = (client: GraphQLClient) => ({
       async getActiveSubscriptionByStoreID(
             input: GetActiveSubscriptionByStoreIDRequest, 
             fetchFields?: {
-            root?: (keyof GetActiveSubscriptionByStoreIDResponse)[],
-            nestedFields?: GetActiveSubscriptionByStoreIDResponseNestedFields
+                root?: (keyof GetActiveSubscriptionByStoreIDResponse)[],
+                nestedFields?: GetActiveSubscriptionByStoreIDResponseNestedFields
             },
             option?: RequestOption
         ): Promise<GetActiveSubscriptionByStoreIDResponse | null> {
@@ -85,8 +85,8 @@ export const createSubscriptionService = (client: GraphQLClient) => ({
             >(
                 subscriptionSchema.getActiveSubscriptionByStoreID(
                     gqlQueryStringBuilder<GetActiveSubscriptionByStoreIDResponse, GetActiveSubscriptionByStoreIDResponseNestedFields>(
-                    fetchFields?.root ?? getActiveSubscriptionByStoreIDResponse,
-                    fetchFields?.nestedFields ?? getActiveSubscriptionByStoreIDResponseNestedFields
+                        fetchFields?.root ?? getActiveSubscriptionByStoreIDResponse,
+                        fetchFields?.nestedFields ?? getActiveSubscriptionByStoreIDResponseNestedFields
                     )
                 ), 
                 input, 

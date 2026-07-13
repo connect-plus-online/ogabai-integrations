@@ -41,6 +41,8 @@ describe.sequential("Subscription Plan API", () => {
         const subscription = res?.subscription
         expect(subscription?.SubscriptionAccesses.length).greaterThan(0);
         expect(subscription?.subscriptionLimits.length).greaterThan(0);
+        expect(subscription?.subscriptionPlan).not.toBeNull();
+        expect(subscription?.subscriptionPlan.id).not.equal("");
 
     })
     it("get subscription by store id", async () => {
@@ -53,6 +55,9 @@ describe.sequential("Subscription Plan API", () => {
         expect(subscription?.SubscriptionAccesses.length).greaterThan(0);
         expect(subscription?.subscriptionLimits.length).greaterThan(0);
 
+        expect(subscription?.subscriptionPlan).not.toBeNull();
+        expect(subscription?.subscriptionPlan.id).not.equal("");
+
     })
 
     it("list subscriptions", async () => {
@@ -60,7 +65,7 @@ describe.sequential("Subscription Plan API", () => {
             limit: 10,
             skip: 0
         })
-        console.log({ res: JSON.stringify(res)})
+        expect(res?.subscriptions.length).greaterThan(0);
     })
 
     // it("create subscription", async () => {
