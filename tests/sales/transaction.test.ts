@@ -44,6 +44,7 @@ describe.sequential("Transaction API", () => {
             }
         })
         expect(res?.transaction).not.toBeNull();
+        expect(res?.transaction.sales.length).greaterThan(0)
         transactionId = res?.transaction?._id || "";
     })
 
@@ -135,8 +136,6 @@ describe.sequential("Transaction API", () => {
                 ]
             }
         })
-        console.log({ res: JSON.stringify(res, null, 2) })
         expect(res?.transaction).not.toBeNull();
-        expect(res?.transaction.sales.length).greaterThan(0)
     })
 })
