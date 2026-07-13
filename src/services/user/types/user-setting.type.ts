@@ -1,5 +1,5 @@
 import { UserSetting } from "../../../types";
-import { UserSettingFields, userSettingQuery } from "../entities/user.entity";
+import { userSettingQuery, UserSettingFields } from "../user.entity";
 
 export interface GetUserSettingRequest {
     userId: string;

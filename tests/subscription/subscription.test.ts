@@ -29,12 +29,43 @@ describe.sequential("Subscription Plan API", () => {
     //     expect(res?.subscriptionPlan.id).not.equal("");
     //     subscriptionPlanId = res?.subscriptionPlan.id
     // })
+    it("get subscription by id", async () => {
+        const res = await subscriptionService.getSubscription({
+            subscription: {
+                // id: "6f02dad2-3231-4d1f-93f2-20c0554ee76f",
+                userId: env?.userId
+            }
+        })
+
+        expect(res?.subscription).not.toBeNull();
+        const subscription = res?.subscription
+        expect(subscription?.SubscriptionAccesses.length).greaterThan(0);
+        expect(subscription?.subscriptionLimits.length).greaterThan(0);
+        expect(subscription?.subscriptionPlan).not.toBeNull();
+        expect(subscription?.subscriptionPlan.id).not.equal("");
+
+    })
+    it("get subscription by store id", async () => {
+        const res = await subscriptionService.getActiveSubscriptionByStoreID({
+            storeId: env?.storeId!
+        })
+
+        expect(res?.subscription).not.toBeNull();
+        const subscription = res?.subscription
+        expect(subscription?.SubscriptionAccesses.length).greaterThan(0);
+        expect(subscription?.subscriptionLimits.length).greaterThan(0);
+
+        expect(subscription?.subscriptionPlan).not.toBeNull();
+        expect(subscription?.subscriptionPlan.id).not.equal("");
+
+    })
+
     it("list subscriptions", async () => {
         const res = await subscriptionService.getSubscriptions({
             limit: 10,
             skip: 0
         })
-        console.log({ res: JSON.stringify(res)})
+        expect(res?.subscriptions.length).greaterThan(0);
     })
 
     // it("create subscription", async () => {

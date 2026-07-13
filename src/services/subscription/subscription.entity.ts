@@ -11,6 +11,8 @@ import { Subscription, SubscriptionPlan,
 export type SubscriptionPlanFeatureFields = (keyof SubscriptionPlanFeature)[];
 export type SubscriptionPlanFields = (keyof SubscriptionPlan)[];
 export type SubscriptionFields = (keyof Subscription)[]
+
+
 export type SubscriptionPlanFeatureBehaviourFields = (keyof SubscriptionPlanFeatureBehaviour)[];
 export type SubscriptionPlanFeatureDefinitionFields = (keyof SubscriptionPlanFeatureDefinition)[];
 
@@ -55,12 +57,8 @@ export const subscriptionBehaviourValueQuery: SubscriptionBehaviourValueFields =
     "behaviourIds"
 ]
 export const subscriptionPlanFeatureBehaviourQuery: SubscriptionPlanFeatureBehaviourFields = [
-    "id",
-    "createdAt",
-    "description",
-    "shortname",
-    "subscriptionPlanFeatureKey",
-    "title",
+    "featureKey",
+    "subscriptionPlanFeatureBehaviourId",
 ]
 export const subscriptionQuery: SubscriptionFields = [
     "cancelAtPeriodEnd",
@@ -71,16 +69,21 @@ export const subscriptionQuery: SubscriptionFields = [
     "currentPeriodStart",
     "defaultPaymentMethodId",
     "id",
-    "subscriptionPrice",
+    "paymentDataJson",
+    "paymentReference",
+    "storeIds",
+    "SubscriptionAccesses",
+    "subscriptionBehaviours",
+    "subscriptionLimits",
+    "subscriptionPlan",
     "subscriptionPlanId",
+    "subscriptionPrice",
     "subscriptionStatus",
     "trialEnd",
     "updatedAt",
     "userId",
-    "storeIds",
     "version",
-    "paymentDataJson",
-    "paymentReference"
+    
 ]
 export const subscriptionPlanFeatureQuery: SubscriptionPlanFeatureFields = [
     "limitValue",

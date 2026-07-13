@@ -6,6 +6,14 @@ export const subscriptionSchema = {
             }
         }
     `,
+    // get subscription by store id 
+    getActiveSubscriptionByStoreID: (query: string) => `
+        query getActiveSubscriptionByStoreID($storeId: String!) {
+            getActiveSubscriptionByStoreID(storeId: $storeId) {
+                ${query}
+            }
+        }
+    `,
     getSubscriptions: (query: string) => `
         query getSubscriptions($search: String, $subscriptionIds: [String], $subscription: SubscriptionInput, $limit: Int!, $skip: Int!) {
             getSubscriptions(search: $search, subscriptionIds: $subscriptionIds, subscription: $subscription, limit: $limit, skip: $skip) {

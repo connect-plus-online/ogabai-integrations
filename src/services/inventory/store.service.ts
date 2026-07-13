@@ -141,10 +141,10 @@ export const createStoreService = (client: GraphQLClient) => {
       );
       return res.data?.getStores ?? null;
     },
-    userCases: {  
+    useCases: {  
       retailer: {
         async createStore(
-          input: Store,
+          input: Partial<Store>,
           fetchFields?: {
             root?: (keyof AddStoreResponse)[],
             nestedFields?: AddStoreResponseNestedFields
