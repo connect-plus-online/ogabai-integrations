@@ -46,7 +46,8 @@ export const subscriptionPlanFeatureDefinitionQuery: SubscriptionPlanFeatureDefi
 ]
 export const subscriptionLimitValueQuery: SubscriptionLimitValueFields = [
     "featureKey",
-    "limitValue"
+    "limitValue",
+    "limitUsage",
 ]
 export const subscriptionAccessValueQuery: SubscriptionAccessValueFields = [
     "featureKey",
@@ -83,7 +84,6 @@ export const subscriptionQuery: SubscriptionFields = [
     "updatedAt",
     "userId",
     "version",
-    
 ]
 export const subscriptionPlanFeatureQuery: SubscriptionPlanFeatureFields = [
     "limitValue",
