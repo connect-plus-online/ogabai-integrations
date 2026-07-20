@@ -28,7 +28,7 @@ const authorizeUser = async (pin: string):Promise<LoginResponse|undefined> => {
     const authService = createAuthService(publicClient);
     if(existingUserAccount){
       const res = await authService.login({
-        phone: "+2347030773772",// "08084063704",
+        phone: "+2347030773778",// "08084063704",
         pin,
         userType: "retail"
       })

@@ -151,27 +151,9 @@ export const createStoreService = (client: GraphQLClient) => {
           },
           option?: RequestOption
         ): Promise<Store | undefined> {
-          const userAccount = createUserAccountService(client)
-          const userRoleService = createUserRoleService(client)
-          const userRoleRes = await userRoleService.getUserRole({
-            userRole: {
-              shortname: "root",
-              storeId: "general",
-              userRoleStatus: "active",
-              isRootAdmin: "true",
-            }
-          })
-          if(!userRoleRes || !userRoleRes?.userRole){
-            throw new Error("Root user role not found")
-          }
+          
           const store = (await addStore({ store: input }, fetchFields, option))?.store;
-          await userAccount.createUserAccount({
-            userAccount: {
-              storeId: store?._id,
-              userId: store?.ownerId,
-              userRoleId: userRoleRes?.userRole?.id,
-            }
-          })
+          
           return store;
         }
       },
