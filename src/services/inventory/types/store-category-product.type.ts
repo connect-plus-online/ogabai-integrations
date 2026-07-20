@@ -21,7 +21,7 @@ export const getStoreCategoryProductResponseNestedFields: GetStoreCategoryProduc
 export interface GetStoreCategoryProductsRequest {
     search?: string;
     storeCategoryProductIds?: string[];
-    storeCategoryProduct?: Partial<StoreCategoryProduct>[];
+    storeCategoryProduct?: Partial<StoreCategoryProduct>;
     limit: number;
     skip: number;
 }

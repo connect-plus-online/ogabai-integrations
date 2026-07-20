@@ -97,6 +97,7 @@ export interface SubscriptionPlanFeatureBehaviourValue {
 export interface SubscriptionPlanFeatureLimitValue {
   featureKey: SubscriptionPlanFeatureKey;
   limitValue: number;
+  limitUsage: number;
 }
 export interface SubscriptionPlanFeatureAccessValue {
   featureKey: SubscriptionPlanFeatureKey;
