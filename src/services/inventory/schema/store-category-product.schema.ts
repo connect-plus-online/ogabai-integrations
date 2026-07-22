@@ -1,4 +1,11 @@
 export const storeCategoryProductSchema = {
+    getStoreCategoryProductsByCategories: (query: string) => `
+        query getStoreCategoryProductsByCategories($storeCategoryIds: [String]!, $limit: Int!, $skip: Int!) {
+            getStoreCategoryProductsByCategories(storeCategoryIds: $storeCategoryIds, limit: $limit, skip: $skip) {
+                ${query}
+            }
+        }
+    `,
     createStoreCategoryProduct: (query: string) => `
         mutation createStoreCategoryProduct($storeCategoryProduct: StoreCategoryProductInput!) {
             createStoreCategoryProduct(storeCategoryProduct: $storeCategoryProduct) {

@@ -1,6 +1,8 @@
 import { StoreCategoryProduct } from "../../../types";
 import { StoreCategoryProductFields, storeCategoryProductQuery } from "../inventory.entities";
 
+
+
 export interface GetStoreCategoryProductRequest {
     storeCategoryProduct: Partial<StoreCategoryProduct>;
 }
@@ -37,6 +39,20 @@ export interface GetStoreCategoryProductsResponseNestedFields extends Omit<GetSt
 export const getStoreCategoryProductsResponseNestedFields: GetStoreCategoryProductsResponseNestedFields = {
     storeCategoryProducts: storeCategoryProductQuery
 }
+
+
+export interface GetStoreCategoryProductsByCategoriesRequest {
+    storeCategoryIds: string[];
+    limit: number;
+    skip: number;
+}
+export interface GetStoreCategoryProductsByCategoriesResponse {
+    storeCategoryProducts: StoreCategoryProduct[]
+}
+export const getStoreCategoryProductsByCategoriesResponseFields: (keyof GetStoreCategoryProductsByCategoriesResponse)[] = getStoreCategoryProductsResponseFields
+export type GetStoreCategoryProductsByCategoriesResponseNestedFields = GetStoreCategoryProductsResponseNestedFields
+export const getStoreCategoryProductsByCategoriesResponseNestedFields = getStoreCategoryProductsResponseNestedFields
+
 
 export type CreateStoreCategoryProductRequest = GetStoreCategoryProductRequest;
 export type CreateStoreCategoryProductResponse = GetStoreCategoryProductResponse;

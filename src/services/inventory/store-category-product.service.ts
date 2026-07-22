@@ -1,9 +1,29 @@
 import { GraphQLClient, RequestOption } from "../../client";
 import { gqlQueryStringBuilder } from "../../helpers/query";
 import { storeCategoryProductSchema } from "./schema/store-category-product.schema";
-import { CreateStoreCategoryProductRequest, CreateStoreCategoryProductResponse, createStoreCategoryProductResponseFields, createStoreCategoryProductResponseNestedFields, CreateStoreCategoryProductResponseNestedFields, GetStoreCategoryProductsRequest, GetStoreCategoryProductsResponse, getStoreCategoryProductsResponseFields, getStoreCategoryProductsResponseNestedFields, GetStoreCategoryProductsResponseNestedFields, GetStoreCategoryProductRequest, GetStoreCategoryProductResponse, getStoreCategoryProductResponseFields, getStoreCategoryProductResponseNestedFields, GetStoreCategoryProductResponseNestedFields, RemoveStoreCategoryProductRequest, RemoveStoreCategoryProductResponse, removeStoreCategoryProductResponseFields, UpdateStoreCategoryProductRequest, UpdateStoreCategoryProductResponse, updateStoreCategoryProductResponseFields, updateStoreCategoryProductResponseNestedFields, UpdateStoreCategoryProductResponseNestedFields } from "./types/store-category-product.type";
+import { CreateStoreCategoryProductRequest, CreateStoreCategoryProductResponse, createStoreCategoryProductResponseFields, createStoreCategoryProductResponseNestedFields, CreateStoreCategoryProductResponseNestedFields, GetStoreCategoryProductsRequest, GetStoreCategoryProductsResponse, getStoreCategoryProductsResponseFields, getStoreCategoryProductsResponseNestedFields, GetStoreCategoryProductsResponseNestedFields, GetStoreCategoryProductRequest, GetStoreCategoryProductResponse, getStoreCategoryProductResponseFields, getStoreCategoryProductResponseNestedFields, GetStoreCategoryProductResponseNestedFields, RemoveStoreCategoryProductRequest, RemoveStoreCategoryProductResponse, removeStoreCategoryProductResponseFields, UpdateStoreCategoryProductRequest, UpdateStoreCategoryProductResponse, updateStoreCategoryProductResponseFields, updateStoreCategoryProductResponseNestedFields, UpdateStoreCategoryProductResponseNestedFields, GetStoreCategoryProductsByCategoriesRequest, GetStoreCategoryProductsByCategoriesResponse, GetStoreCategoryProductsByCategoriesResponseNestedFields, getStoreCategoryProductsByCategoriesResponseFields, getStoreCategoryProductsByCategoriesResponseNestedFields } from "./types/store-category-product.type";
 
 export const createStoreCategoryProductService = (client: GraphQLClient) => ({
+    async getStoreCategoryProductsByCategories(
+        input: GetStoreCategoryProductsByCategoriesRequest, 
+        fetchFields?: {
+          root?: (keyof GetStoreCategoryProductsByCategoriesResponse)[],
+          nestedFields?: GetStoreCategoryProductsByCategoriesResponseNestedFields
+        },
+        option?: RequestOption
+    ): Promise<GetStoreCategoryProductsByCategoriesResponse | null> {
+        const res = await client.request<{ getStoreCategoryProductsByCategories: GetStoreCategoryProductsByCategoriesResponse }, GetStoreCategoryProductsByCategoriesRequest>(
+            storeCategoryProductSchema.getStoreCategoryProductsByCategories(
+                gqlQueryStringBuilder<GetStoreCategoryProductsByCategoriesResponse, GetStoreCategoryProductsByCategoriesResponseNestedFields>(
+                    fetchFields?.root ?? getStoreCategoryProductsByCategoriesResponseFields,
+                    fetchFields?.nestedFields ?? getStoreCategoryProductsByCategoriesResponseNestedFields,
+                )
+            ), 
+            input, 
+            option
+        )  
+        return res.data?.getStoreCategoryProductsByCategories ?? null;
+    },
     async getStoreCategoryProducts(
         input: GetStoreCategoryProductsRequest, 
         fetchFields?: {

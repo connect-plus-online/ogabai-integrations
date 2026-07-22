@@ -97,6 +97,15 @@ describe.sequential("Store Category Product API", () => {
         expect(res?.storeCategoryProduct).not.toBeNull();
         expect(res?.storeCategoryProduct._id.length).greaterThan(0)
     })
+    it("should get store category products by store category id", async () => {
+        if(!storeCategoryId) return
+        const res = await storeCategoryProduct.getStoreCategoryProductsByCategories({
+            storeCategoryIds: [storeCategoryId],
+            limit: 10,
+            skip: 0,
+        })
+        expect(res?.storeCategoryProducts.length).greaterThan(0)
+    })
     it("should remove store category product", async () => {
         if(!storeCategoryProductId) return
         const res = await storeCategoryProduct.removeStoreCategoryProduct({
