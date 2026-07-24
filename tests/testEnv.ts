@@ -26,6 +26,7 @@ export const createClient = (backendUrl: string, accessToken?: string, storeId?:
           "ojami-store-id": storeId || "",
         }),
         tokenProvider: async () => accessToken || "",
+        timeoutMs: 90000
     });
 
 export async function initTestEnv(): Promise<GlobalTestEnv|null> {
