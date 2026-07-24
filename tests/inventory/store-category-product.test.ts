@@ -26,7 +26,7 @@ describe.sequential("Store Category Product API", () => {
         const product =  getProduct(env?.storeId || "")
         const res = await productTemplateService.addProduct({
             product,
-            imageTypes: ["image/jpeg", "image/png"],
+            // imageTypes: ["image/jpeg", "image/png"],
         })
         expect(res?.product).not.toBeNull();
         expect(res?.product._id.length).greaterThan(0)
@@ -36,7 +36,7 @@ describe.sequential("Store Category Product API", () => {
         const product2 =  getProduct(env?.storeId || "")
         const res2 = await productTemplateService.addProduct({
             product: product2,
-            imageTypes: ["image/jpeg", "image/png"],
+            // imageTypes: ["image/jpeg", "image/png"],
         })
         expect(res2?.product).not.toBeNull();
         expect(res2?.product._id.length).greaterThan(0)
