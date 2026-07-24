@@ -112,7 +112,8 @@ describe.sequential("Auth API", () => {
         storeName: chance.name() + " store",
         lastName: chance.name(),
         firstName: chance.name(),
-        storeLocation: chance.address()
+        storeLocation: chance.address(),
+        userType: "retail"
       });
     }catch(e){
       expect((e as Error).message.toLowerCase()).contains("user already exist");
