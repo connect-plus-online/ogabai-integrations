@@ -18,6 +18,12 @@ export default defineConfig({
       shuffle: false,
     },
 
+    poolOptions: {
+      forks: {
+        singleFork: true,
+      },
+    },
+
     // // 👇 this disables parallel workers
     pool: 'forks', // 'threads',   // (default, but can be 'forks' if you use forking)
   },
