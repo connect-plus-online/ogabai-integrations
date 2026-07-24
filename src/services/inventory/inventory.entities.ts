@@ -59,7 +59,6 @@ export const storeQuery: StoreFields = [
     "_id",
     "name",
     "address",
-    "shopType",
     "ownerId",
     "createdAt",
     "storeLocation",

@@ -97,7 +97,6 @@ export interface Store {
   _id: string;
   name: string;
   address: Address;
-  shopType: string;
   ownerId: string;
   storeLocation: string;
   createdAt: string;
@@ -128,7 +127,7 @@ export interface Stock {
 export interface StoreSetting {
   _id: string;
   storeId: string;
-  shopType: string;
+  // shopType: string;
   shouldReconcileStockPrice: string;
   shouldBroadcastOrderAtStockLimit: string;
   shouldSendEmailNotification: string;
