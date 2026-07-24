@@ -26,7 +26,7 @@ const authorizeUser = async (pin: string):Promise<LoginResponse|undefined> => {
     const existingUserAccount = process.env.EXISTING_USER_ACCOUNT
     const publicClient = createClient(ENDPOINT_URL);
     const authService = createAuthService(publicClient);
-    if(existingUserAccount){
+    if(existingUserAccount === "true"){
       const res = await authService.login({
         phone: "+2347030773778",// "08084063704",
         pin,
