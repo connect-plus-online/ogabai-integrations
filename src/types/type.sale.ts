@@ -41,6 +41,7 @@ export interface Sale {
   createdAt: string;
   storeId: string;
   transactionId?: string;
+  orderId: string;
 };
 
 // -------------------- Transaction --------------------

@@ -104,5 +104,6 @@ export const subscriptionPlanQuery: SubscriptionPlanFields = [
     "updatedAt", 
     "features", 
     "monthlyPlanPrice",
-    "annuallyPlanPrice"
+    "annuallyPlanPrice",
+    "userType"
 ]

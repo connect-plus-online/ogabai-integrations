@@ -1,3 +1,5 @@
+import { UserType } from "./user";
+
 export interface SubscriptionPlanFeatureBehaviour {
   featureKey: SubscriptionPlanFeatureKey;
   subscriptionPlanFeatureBehaviourId: string;
@@ -88,6 +90,7 @@ export interface SubscriptionPlan {
     paystackPlanId?: string;
     monthlyPlanPrice: number;
     annuallyPlanPrice: number;
+    userType: UserType
 }
 
 export interface SubscriptionPlanFeatureBehaviourValue {

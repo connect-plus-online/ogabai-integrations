@@ -90,6 +90,7 @@ describe.sequential("Product API", () => {
             }
         })
         expect(res?.products.length).greaterThan(0);
+        expect(res?.total).greaterThan(0);
     });
     // it("should remove product", async () => {
     //     const res = await productService.removeProduct({

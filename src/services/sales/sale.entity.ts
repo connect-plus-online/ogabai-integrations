@@ -75,5 +75,7 @@ export const saleQuery: SaleFields = [
     "packageId", 
     "productId", 
     "quantity", 
-    "storeId"
+    "storeId",
+    "transactionId",
+    "orderId"
 ]

@@ -40,6 +40,8 @@ describe.sequential("Auth API", () => {
       const res = await authService?.login({
         pin, phone
       });
+      expect(res?.data?.login).toBeNull();
+      expect(res.data?.login.accessToken).not.equal("")
     }catch(e){
       expect((e as Error).message.toLowerCase()).contains("user not found");
     }
@@ -51,8 +53,10 @@ describe.sequential("Auth API", () => {
       storeName: chance.name() + " store",
       lastName: chance.name(),
       firstName: chance.name(),
-      storeLocation: chance.address()
+      storeLocation: chance.address(),
+      userType: "retail"
     });
+    console.log({ res: JSON.stringify(res, null, 2) })
     expect(res?.data?.signUp).not.toBeNull();
     userId = res?.data?.signUp?.userId;
   })
