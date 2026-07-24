@@ -9,10 +9,11 @@ import {
     PackageFields, packageQuery, 
     PriceFields, 
     priceQuery, 
-    ProductFields, productNameQuery, ProductNamesFields, 
+    ProductFields, ProductMetadataFields, productMetadataQuery, productNameQuery, ProductNamesFields, 
     productQuery, 
     StockFields,
-    stockQuery} from "../inventory.entities"
+    stockQuery
+} from "../inventory.entities"
 
 
 
@@ -47,6 +48,7 @@ export interface GetProductResponseNestedFields {
     price: PriceFields;
     stocks: StockFields;
     productAttributes: AttributeFields;
+    productMetadata: ProductMetadataFields;
 }
 export const getProductResponseFields: (keyof GetProductResponse)[] = [
     "product"
@@ -58,6 +60,7 @@ export const _getProductResponseNestedFields: Omit<GetProductResponseNestedField
     price: priceQuery,
     stocks: stockQuery,
     productAttributes: attributeQuery,
+    productMetadata: productMetadataQuery,
 }
 export const getProductResponseNestedFields: GetProductResponseNestedFields = {
     product: productQuery,
@@ -77,12 +80,13 @@ export interface GetProductsRequest {
 }
 export interface GetProductsResponse {
     products: Product[]
+    total: number
 }
 export interface GetProductsResponseNestedFields extends Omit<GetProductResponseNestedFields, "product">{
     products: ProductFields;
 }
 export const getProductsResponseFields: (keyof GetProductsResponse)[] = [
-    "products"
+    "products", "total"
 ]
 export const getProductsResponseNestedFields: GetProductsResponseNestedFields = {
     products: productQuery,

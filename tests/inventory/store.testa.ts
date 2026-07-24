@@ -18,7 +18,6 @@ describe.sequential("Store API", () => {
             store: {
                 name: chance.name(),
                 storeLocation: chance.address(),
-                shopType: "provision",
                 ownerId: env?.userId!
             }
         })

@@ -33,6 +33,12 @@ export interface ProductName {
   _id: string;
   name: string;
 }
+
+export interface ProductMetadata {
+  manufacturerId: string;
+  distributorId: string;
+  templateId: string;
+}
 export interface Product extends ProductName {
   barcode: string;
   description: string;
@@ -48,6 +54,8 @@ export interface Product extends ProductName {
   category: ProductCategory;
   smallestPackage: ProductPackage;
   preExpirationNoticeInWeeks: string;
+  productMetadata: Partial<ProductMetadata>;
+
 }
 
 export interface ProductLight {
@@ -84,14 +92,15 @@ export interface Price {
   createdAt: string;
 }
 
+export type StoreType = "retail" | "distributor" | "manufacturer";
 export interface Store {
   _id: string;
   name: string;
   address: Address;
-  shopType: string;
   ownerId: string;
   storeLocation: string;
   createdAt: string;
+  storeType: StoreType;
 }
 
 export interface Address {
@@ -118,7 +127,7 @@ export interface Stock {
 export interface StoreSetting {
   _id: string;
   storeId: string;
-  shopType: string;
+  // shopType: string;
   shouldReconcileStockPrice: string;
   shouldBroadcastOrderAtStockLimit: string;
   shouldSendEmailNotification: string;
