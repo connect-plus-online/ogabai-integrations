@@ -24,7 +24,6 @@ describe.sequential("Product API", () => {
         categoryName = product.category?.name || ""
         const res = await productService.addProduct({
             product,
-            // imageTypes: ["image/jpeg", "image/png"],
             template: true,
         })
         expect(res?.product).not.toBeNull();
