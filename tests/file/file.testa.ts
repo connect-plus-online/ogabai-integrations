@@ -36,7 +36,6 @@ describe.only.sequential("File Upload API", () => {
     //     const product = getProduct(env?.storeId || "");
     //     const res = await productService.addProduct({
     //         product,
-    //         imageTypes: ["image/jpeg", "image/png"],
     //     });
     //     console.log({ res: JSON.stringify(res, null, 2) })
     //     expect(res?.product).not.toBeNull();
