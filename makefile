@@ -3,7 +3,8 @@ publish:
 
 act-pull:
 	act pull_request \
-  	-P ubuntu-latest=catthehacker/ubuntu:act-latest
+	--secret-file .env \
+	-P ubuntu-latest=catthehacker/ubuntu:act-latest
 
 release:
 	yarn version --patch
