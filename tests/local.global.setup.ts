@@ -46,7 +46,7 @@ const authorizeUser = async (pin: string):Promise<LoginResponse|undefined> => {
 }
 
 export default async function globalSetup() {
-  console.log("🌍 [global.setup.ts] Running once for all tests...");
+  console.log("🌍 [local.global.setup] Running once for all tests...");
   const pin = "123456"
   const res = await authorizeUser(pin);
   const accessToken = res?.accessToken ?? "";

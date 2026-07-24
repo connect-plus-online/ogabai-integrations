@@ -20,7 +20,7 @@ const CACHE_PATH = path.resolve(__dirname, ".global-env-cache.json");
 const ENDPOINT_URL = "http://localhost:8080"
 
 export default async function globalSetup() {
-  console.log("🌍 [global.setup.ts] Running once for all tests...");
+  console.log("🌍 [manufacturer.local.global.setup] Running once for all tests...");
 
   const publicClient = createClient(ENDPOINT_URL);
   const authService = createAuthService(publicClient);
