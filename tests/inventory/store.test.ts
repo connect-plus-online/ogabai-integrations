@@ -53,6 +53,7 @@ describe.sequential("Store API", () => {
             }
         })
         expect(res?.stores?.length).greaterThan(0)
+        expect(res?.total).greaterThan(0)
     })
     it("should remove store", async () => {
         const res = await storeService.removeStore({

@@ -63,6 +63,7 @@ describe.sequential("Store Category API", () => {
             skip: 0,
         })
         expect(res?.storeCategories.length).greaterThan(0);
+        expect(res?.total).greaterThan(0);
     });
     // remove store category
     it("should remove store category", async () => {
