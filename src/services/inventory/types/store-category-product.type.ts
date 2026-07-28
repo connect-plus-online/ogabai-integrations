@@ -29,9 +29,10 @@ export interface GetStoreCategoryProductsRequest {
 }
 export interface GetStoreCategoryProductsResponse {
     storeCategoryProducts: StoreCategoryProduct[];
+    total: number;
 }
 export const getStoreCategoryProductsResponseFields: (keyof GetStoreCategoryProductsResponse)[] = [
-    "storeCategoryProducts"
+    "storeCategoryProducts", "total"
 ]
 export interface GetStoreCategoryProductsResponseNestedFields extends Omit<GetStoreCategoryProductResponseNestedFields, "storeCategoryProduct"> {
     storeCategoryProducts: StoreCategoryProductFields;
@@ -47,7 +48,8 @@ export interface GetStoreCategoryProductsByCategoriesRequest {
     skip: number;
 }
 export interface GetStoreCategoryProductsByCategoriesResponse {
-    storeCategoryProducts: StoreCategoryProduct[]
+    storeCategoryProducts: StoreCategoryProduct[];
+    total: number;
 }
 export const getStoreCategoryProductsByCategoriesResponseFields: (keyof GetStoreCategoryProductsByCategoriesResponse)[] = getStoreCategoryProductsResponseFields
 export type GetStoreCategoryProductsByCategoriesResponseNestedFields = GetStoreCategoryProductsResponseNestedFields

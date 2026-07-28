@@ -39,9 +39,10 @@ export interface GetStoresRequest {
 }
 export interface GetStoresResponse {
     stores?: Store[];
+    total: number;
 }
 export const getStoresResponse:(keyof GetStoresResponse)[] = [
-    "stores"
+    "stores", "total"
 ]
 export interface GetStoresResponseNestedFields extends Omit<GetStoreResponseNestedFields, "store"> {
     stores: StoreFields;

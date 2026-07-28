@@ -36,9 +36,10 @@ describe.sequential("Transaction API", () => {
                         quantity: 5,
                         packageId: product.smallestPackageId,
                         amountTotal: 30000,
+                        storeId,
                         _id: "",
                         createdAt: "",
-                        storeId,
+                        orderId: ""
                     }
                 ]
             }
@@ -66,7 +67,9 @@ describe.sequential("Transaction API", () => {
                 storeId
             }
         })
+        console.log({ res: JSON.stringify(res, null, 2) })
         expect(res?.transactions?.length).greaterThan(0)
+        expect(res?.total).greaterThan(0)
     })
 
     it("sale quantity cannot be greater than previous sale quantity", async () => {
@@ -85,6 +88,7 @@ describe.sequential("Transaction API", () => {
                             _id: "",
                             createdAt: "",
                             storeId,
+                            orderId: ""
                         }
                     ]
                 }
@@ -109,6 +113,7 @@ describe.sequential("Transaction API", () => {
                             _id: "",
                             createdAt: "",
                             storeId,
+                            orderId: ""
                         }
                     ]
                 }
@@ -132,6 +137,7 @@ describe.sequential("Transaction API", () => {
                         _id: "",
                         createdAt: "",
                         storeId,
+                        orderId: ""
                     }
                 ]
             }

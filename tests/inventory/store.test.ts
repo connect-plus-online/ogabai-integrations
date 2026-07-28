@@ -23,7 +23,6 @@ describe.sequential("Store API", () => {
         })
         expect(res?.store?._id.length).greaterThan(0);
         if(res?.store?._id) storeId = res?.store?._id
-        console.log({ storeId })
     })
     it("store count should be more than 0", async () => {
         const res = await storeService.getStoreCount({
@@ -31,7 +30,6 @@ describe.sequential("Store API", () => {
                 ownerId: env?.userId
             }
         })
-        console.log({ res })
         expect(res?.count).greaterThan(0)
     })
     it("should get store", async () => {
@@ -53,6 +51,7 @@ describe.sequential("Store API", () => {
             }
         })
         expect(res?.stores?.length).greaterThan(0)
+        expect(res?.total).greaterThan(0)
     })
     it("should remove store", async () => {
         const res = await storeService.removeStore({

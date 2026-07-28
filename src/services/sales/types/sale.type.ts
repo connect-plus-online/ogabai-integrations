@@ -2,15 +2,15 @@ import { DateFilter, Product, Sale } from "../../../types";
 import { SaleFields, saleQuery } from "../sale.entity"
 import { ProductFields, productQuery } from "../../inventory/inventory.entities"
 import { _getProductResponseNestedFields, GetProductResponseNestedFields } from "../../inventory/types"
-export interface GetSalesRequest {
+export interface GetSaleRequest {
     sale: Promise<Sale>;
 }
 
-export interface GetSalesResponse {
+export interface GetSaleResponse {
     sale: Sale;
 }
 
-export const getSaleResponse: (keyof GetSalesResponse)[] = ["sale"]
+export const getSaleResponse: (keyof GetSaleResponse)[] = ["sale"]
 export interface GetSaleResponseNestedFields extends Omit<GetProductResponseNestedFields, "product"> {
     sale: SaleFields;
 }
@@ -32,11 +32,12 @@ export interface GetSalesRequest {
 }
 export interface GetSalesResponse {
     sales: Sale[];
-    uniqueProducts: Product[]
+    uniqueProducts: Product[];
+    total: number;
 }
 
 export const getSalesResponse: (keyof GetSalesResponse)[] = [
-    "sales", "uniqueProducts"
+    "sales", "uniqueProducts", "total"
 ]
 export interface GetSalesResponseNestedFields extends Omit<GetSaleResponseNestedFields, "sale"> {
     sales: SaleFields;

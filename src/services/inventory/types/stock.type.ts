@@ -26,9 +26,10 @@ export interface GetStocksRequest {
 }
 export interface GetStocksResponse {
     stocks?: Stock[];
+    total: number
 }
 export const getStocksResponse:(keyof GetStocksResponse)[] = [
-    "stocks"
+    "stocks", "total"
 ]
 export interface GetStocksResponseNestedFields {
     stocks: StockFields;

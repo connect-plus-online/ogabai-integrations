@@ -84,6 +84,7 @@ describe.sequential("Store Category Product API", () => {
             skip: 0,
         })
         expect(res?.storeCategoryProducts.length).greaterThan(0)
+        expect(res?.total).greaterThan(0)
     })
     it("should update store category product", async () => {
         if(!storeCategoryProductId) return
@@ -105,6 +106,7 @@ describe.sequential("Store Category Product API", () => {
             skip: 0,
         })
         expect(res?.storeCategoryProducts.length).greaterThan(0)
+        expect(res?.total).greaterThan(0)
     })
     it("should remove store category product", async () => {
         if(!storeCategoryProductId) return
