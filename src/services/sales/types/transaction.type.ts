@@ -37,9 +37,10 @@ export interface GetTransactionsRequest {
 export interface GetTransactionsResponse {
     transactions: Transaction[];
     uniqueProducts: Product[];
+    total: number;
 }
 export const getTransactionsResponse: (keyof GetTransactionsResponse)[] = [
-    "transactions", "uniqueProducts"
+    "transactions", "uniqueProducts", "total"
 ]
 export interface GetTransactionsResponseNestedFields extends Omit<GetProductResponseNestedFields, "product"> {
     transactions: TransactionFields;
